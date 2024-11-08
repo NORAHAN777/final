@@ -19,6 +19,7 @@ let waveList = [];
 let t = 0;
 
 ## Technical explanation
+
 function updateSvg() {
     // Left-right shaking for reflections
     for (let i = 0; i < segmentList.length; i++) {
