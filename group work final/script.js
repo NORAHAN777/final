@@ -219,10 +219,20 @@ function drawWaves(startX, waveY) {
     wave.setAttribute("d", `M${cx - rx},${cy} A${rx},${ry} 0 1,0 ${cx + rx},${cy}`);
     wave.setAttribute("fill", "rgba(0, 105, 197, 0.3)");
     svg.appendChild(wave);
+    // record wave
+    waveList.push({
+        wave,
+        cx, cy, rx, ry
+    })
+}
+
+// init p5js
+function setup() {
+    createCanvas(0, 0)
 }
 
 // Execute the main draw functions on page load
-window.onload = function() {
+window.onload = function () {
     drawSkyBackground();
     drawBuilding();
     drawBuilding1(); // Ensure the second building set is drawn
@@ -234,4 +244,10 @@ window.onload = function() {
     for (let i = 0; i < wavePositions.length; i++) {
         drawWaves(wavePositions[i], waveYPositions[i]);
     }
+
+    setInterval(() => {
+        updateSvg()
+    }, 20);
 };
+
+
